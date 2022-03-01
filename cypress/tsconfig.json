@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"target": "es5",
+		"lib": ["es5", "dom"],
+		"baseUrl": "../node_modules",
+		"types": ["cypress"]
+	},
+	"include": ["**/*.ts"],
+	"exclude": ["./plugins/**/*", "./integration/2-advanced-examples/**"]
+}

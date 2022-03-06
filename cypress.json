@@ -14,5 +14,6 @@
 	"failOnStatusCode": false,
 	"reporter": "cypress-mochawesome-reporter",
 	"experimentalSourceRewriting": true,
-	"projectId": "i7nzsc"
+	"projectId": "i7nzsc",
+	"testFiles": "**/*.feature"
 }

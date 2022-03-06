@@ -15,18 +15,9 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+import './app'
+import './userActions'
 import 'cypress-xpath'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-declare global {
-	namespace Cypress {
-		interface Chainable {
-			/**
-			 * Custom command to select DOM element by data-cy attribute.
-			 * @example cy.dataCy('greeting')
-			 */
-			loginCy(username: string, password: string): Chainable<Element>
-		}
-	}
-}

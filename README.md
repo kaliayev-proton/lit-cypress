@@ -25,3 +25,15 @@
 `npx cypress run --spec="cypress/integration/<my-single-test-file>"`
 
 ## Prettier
+
+## Cypress Mochawesome Reporter
+
+`npm run cy:run` it generates a **report** folder in the root
+
+## Records
+
+When we open Cypress with `npm run cy:open` we have a tab called `Runs`.
+
+- Set up your project un cypress dashboard: `https://dashboard.cypress.io`
+- Insert project ID in cypress.json: `projectId: <my-project-id>`
+- Execute: `npx cypress run --record --key 1946c39f-5d60-4244-a22f-a2c4945452cc`

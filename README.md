@@ -37,3 +37,7 @@ When we open Cypress with `npm run cy:open` we have a tab called `Runs`.
 - Set up your project un cypress dashboard: `https://dashboard.cypress.io`
 - Insert project ID in cypress.json: `projectId: <my-project-id>`
 - Execute: `npx cypress run --record --key 1946c39f-5d60-4244-a22f-a2c4945452cc`
+
+## Execute Cypress in Docker
+
+`docker build -t cypress .`

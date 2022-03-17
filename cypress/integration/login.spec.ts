@@ -39,3 +39,31 @@ describe('Login / Logout Test', () => {
 		cy.url().should('include', 'index.html')
 	})
 })
+
+describe('Visual Regression - Login page', () => {
+	before(() => {
+		cy.visit('zero.webappsecurity.com/index.html', { timeout: 10000 })
+		cy.get('#signin_button').click()
+
+		cy.fixture('user_login').then((user) => {
+			const username = user.id
+			const pwd = user.pwd
+
+			cy.loginCy(username, pwd)
+		})
+	})
+
+	it('Desktop Layout', () => {
+		cy.setResolution([1280, 720])
+		cy.matchImageSnapshot()
+	})
+
+	it('Tablet Layout', () => {
+		cy.setResolution('ipad-2')
+		cy.matchImageSnapshot()
+	})
+	it('Mobile Layout', () => {
+		cy.setResolution('iphone-6')
+		cy.matchImageSnapshot()
+	})
+})

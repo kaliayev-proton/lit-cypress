@@ -25,7 +25,13 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command'
-addMatchImageSnapshotCommand()
+
+addMatchImageSnapshotCommand({
+	failureThreshold: 0.0,
+	failureThresholdType: 'percent',
+	customDiffConfig: { threshold: 0.0 },
+	capture: 'viewport',
+})
 
 declare global {
 	namespace Cypress {
@@ -42,7 +48,9 @@ declare global {
 			loginCy(username: string, password: string): Chainable<Element>
 			isVisible(selector: string): Chainable<Element>
 			isHidden(selector: string): Chainable<Element>
-			setResolution(size: Cypress.ViewportPreset): Chainable<Element>
+			setResolution(
+				size: Cypress.ViewportPreset | [number, number]
+			): Chainable<Element>
 		}
 	}
 }
@@ -55,13 +63,16 @@ Cypress.Commands.add('isHidden', (selector: string) => {
 	cy.get(selector).should('not.exist')
 })
 
-Cypress.Commands.add('setResolution', (size: Cypress.ViewportPreset) => {
-	if (Cypress._.isArray(size)) {
-		cy.viewport(size[0], size[1])
-	} else {
-		cy.viewport(size)
+Cypress.Commands.add(
+	'setResolution',
+	(size: Cypress.ViewportPreset | number[]) => {
+		if (Cypress._.isArray(size)) {
+			cy.viewport(size[0], size[1])
+		} else {
+			cy.viewport(size)
+		}
 	}
-})
+)
 
 Cypress.Commands.add('login', (username: string, password: string) => {
 	cy.get('#login_form').should('be.visible')

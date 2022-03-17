@@ -18,6 +18,8 @@ import './commands'
 import './app'
 import './userActions'
 import 'cypress-xpath'
+import '@percy/cypress'
+import 'cypress-audit/commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
